@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Help us test a mobile oil change service planned for Sacramento."
+    />
+    <title>OilDash | Mobile Oil Change</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+  </head>
+  <body>
+    <header class="navbar">
+      <a href="/" class="logo">Oil<span>Dash</span></a>
+      <a href="#waitlist" class="nav-link">Join Early Access</a>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="tag">COMING SOON TO SACRAMENTO</div>
+
+        <h1>Oil Changes.<br /><span>At Your Doorstep.</span></h1>
+
+        <p class="subtitle">
+          Skip the waiting room. We're exploring a convenient mobile oil change
+          service that comes to your home or workplace.
+        </p>
+
+        <a href="#waitlist" class="btn">Join Early Access</a>
+
+        <p class="small">No payment required. We're testing interest.</p>
+      </section>
+
+      <section class="features">
+        <h2>How It Would Work</h2>
+
+        <div class="feature-grid">
+          <div class="feature-card">
+            <div class="emoji">📱</div>
+            <h3>1. Request Service</h3>
+            <p>Choose a convenient appointment time online.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="emoji">🚗</div>
+            <h3>2. We Come to You</h3>
+            <p>Our mobile technician would visit your location.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="emoji">✅</div>
+            <h3>3. Get Back to Life</h3>
+            <p>Get your oil changed without visiting a shop.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="pricing">
+        <h2>Simple, Convenient Service</h2>
+        <p>Proposed starting price</p>
+        <div class="price">$79.99<span> / oil change</span></div>
+        <p class="small">
+          Hypothetical price for market research. Final prices and availability
+          are not established.
+        </p>
+      </section>
+
+      <section class="waitlist-section" id="waitlist">
+        <div class="form-card">
+          <h2>Interested? Let Us Know.</h2>
+          <p>
+            Help us decide whether to bring mobile oil changes to Sacramento.
+          </p>
+
+          {% if success %}
+          <div class="success">
+            Thanks! Your interest has been recorded. This is not an appointment.
+          </div>
+          {% endif %} {% if error %}
+          <div class="error">{{ error }}</div>
+          {% endif %}
+
+          <form method="POST" action="/" class="signup-form">
+            <label for="email">Email Address</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="you@example.com"
+              maxlength="254"
+              required
+            />
+
+            <label for="zipcode">ZIP Code</label>
+            <input
+              type="text"
+              id="zipcode"
+              name="zipcode"
+              placeholder="e.g. 95814"
+              inputmode="numeric"
+              pattern="[0-9]{5}"
+              maxlength="5"
+              required
+            />
+
+            <label for="vehicle">Your Vehicle</label>
+            <input
+              type="text"
+              id="vehicle"
+              name="vehicle"
+              placeholder="e.g. 2015 Toyota Corolla"
+              maxlength="100"
+              required
+            />
+
+            <div class="hidden-field" aria-hidden="true">
+              <label for="website">Website</label>
+              <input
+                type="text"
+                id="website"
+                name="website"
+                tabindex="-1"
+                autocomplete="off"
+              />
+            </div>
+
+            <p class="privacy-note">
+              By submitting, you agree to share these details so we can assess
+              demand and contact you about a potential launch. No booking is
+              made.
+            </p>
+
+            <button type="submit" class="btn">Join the Interest List</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>OilDash — A proposed Sacramento mobile oil change service.</p>
+      <p>Concept testing only. Not currently accepting appointments.</p>
+    </footer>
+  </body>
+</html>
